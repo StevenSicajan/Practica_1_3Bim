@@ -19,7 +19,7 @@
 #define f 10
 #define g 11
 #define tiempo delay(500);
-#define tiempo2 delay(1000);
+#define tiempo2 delay(700);
 #define Cantidad_Leds 12
 #define pin_Led A0
 
@@ -45,6 +45,7 @@ void setColor(int color);
 void setup(){
   Serial.begin(9600);
    anillo.begin();
+  setColor(verde);
   pinMode(a, OUTPUT);
   pinMode(b, OUTPUT);
   pinMode(c, OUTPUT);
@@ -52,7 +53,13 @@ void setup(){
   pinMode(e, OUTPUT);
   pinMode(f, OUTPUT);
   pinMode(g, OUTPUT);
-  pinMode(12, INPUT);
+  digitalWrite(a, HIGH);
+  digitalWrite(b, HIGH);
+  digitalWrite(c, HIGH);
+  digitalWrite(d, HIGH);
+  digitalWrite(e, HIGH);
+  digitalWrite(f, HIGH);
+  digitalWrite(g, LOW);
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
   digitalWrite(trigger, LOW);
@@ -76,8 +83,13 @@ void loop(){
      
     if(personas == 1){
       setColor(verde);
+      digitalWrite(a, LOW);
       digitalWrite(b, HIGH);
       digitalWrite(c, HIGH);
+      digitalWrite(d, LOW);
+      digitalWrite(e, LOW);
+      digitalWrite(f, LOW);
+      digitalWrite(g, LOW);
       Serial.print("Aforo: ");
       Serial.print(personas);
       Serial.print(" persona(s)");
